@@ -4365,13 +4365,3 @@ def run(code, input_list, stack=(), vars=None):
                     stack.push(input_list)
         index += 1
     return removeNone(stack), vars, False
-
-print(run('zz', ['hello thunno'])[0])
-
-'''
-TODO:
-
-SORTING
-
-                
-'''
