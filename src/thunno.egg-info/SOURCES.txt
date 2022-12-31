@@ -1,0 +1,13 @@
+LICENSE.txt
+setup.cfg
+setup.py
+thunno/__init__.py
+thunno/flags.py
+thunno/helpers.py
+thunno/main.py
+thunno/run.py
+thunno.egg-info/PKG-INFO
+thunno.egg-info/SOURCES.txt
+thunno.egg-info/dependency_links.txt
+thunno.egg-info/entry_points.txt
+thunno.egg-info/top_level.txt

@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: thunno
+Version: 1.0.0
+Summary: An ASCII-based golfing language
+Home-page: https://github.com/Thunno/Thunno
+Author: Rujul Nayak
+Author-email: rujulnayak@outlook.com
+License: MIT
+Download-URL: https://github.com/Thunno/Thunno/archive/refs/tags/v100.tar.gz
+Keywords: golfing,code-golf,language
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/x-rst
+License-File: LICENSE.txt
+
+Thunno is an ASCII-based golfing language written in Python. It has over 400 commands. Learn more at https://github.com/Thunno/Thunno
+
