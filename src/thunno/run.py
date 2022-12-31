@@ -88,7 +88,7 @@ def run(code, input_list, stack=(), vars=None):
             stack.push(eval(string))
         elif char == "'":
             index += 1
-            stack.push(char[index])
+            stack.push(code[index])
         elif char == 'b':
             stack.rmv(a)
             if isinstance(a, list):
