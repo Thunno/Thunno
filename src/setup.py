@@ -4,7 +4,7 @@ long_description = 'Thunno is an ASCII-based golfing language written in Python.
 
 setup(
   name = 'thunno',
-  version = '1.0.0',
+  version = '1.0.1',
   license='MIT',
   description = 'An ASCII-based golfing language',
   author = 'Rujul Nayak',
