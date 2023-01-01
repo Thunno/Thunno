@@ -130,7 +130,7 @@ def run(code, input_list, stack=(), vars=None):
             string = ''
             index += 1
             try:
-                while code[index] != 'E' and not az_track(code, index):
+                while code[index] != 'E' or not az_track(code, index):
                     string += code[index]
                     index += 1
             except:
@@ -1187,7 +1187,7 @@ def run(code, input_list, stack=(), vars=None):
             string = ''
             index += 1
             try:
-                while code[index] != '}' and not az_track(code, index):
+                while code[index] != '}' or not az_track(code, index):
                     string += code[index]
                     index += 1
             except:
@@ -1202,7 +1202,7 @@ def run(code, input_list, stack=(), vars=None):
             string = ''
             index += 1
             try:
-                while code[index] != ']' and not az_track(code, index):
+                while code[index] != ']' or not az_track(code, index):
                     string += code[index]
                     index += 1
             except:
@@ -1221,11 +1221,11 @@ def run(code, input_list, stack=(), vars=None):
             falsy = ''
             index += 1
             try:
-                while code[index] != ')' and not az_track(code, index):
+                while code[index] != ')' or not az_track(code, index):
                     truthy += code[index]
                     index += 1
                 index += 1
-                while code[index] != ')' and not az_track(code, index):
+                while code[index] != ')' or not az_track(code, index):
                     falsy += code[index]
                     index += 1
             except:
@@ -1808,7 +1808,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == 'h' and az_track(code, index + 1):
+                                if code[index + 1] == 'h' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -1852,7 +1852,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == 'j' and az_track(code, index + 1):
+                                if code[index + 1] == 'j' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -1889,7 +1889,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == 'm' and az_track(code, index + 1):
+                                if code[index + 1] == 'm' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -1931,7 +1931,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == 'o' and az_track(code, index + 1):
+                                if code[index + 1] == 'o' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -2066,7 +2066,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == ':' and az_track(code, index + 1):
+                                if code[index + 1] == ':' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -2076,7 +2076,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == ';' and az_track(code, index + 1):
+                                if code[index + 1] == ';' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -2100,7 +2100,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == ']' and az_track(code, index + 1):
+                                if code[index + 1] == ']' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -2163,7 +2163,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == '}' and az_track(code, index + 1):
+                                if code[index + 1] == '}' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -2186,7 +2186,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'A':
                             try:
-                                if code[index + 1] == ')' and az_track(code, index + 1):
+                                if code[index + 1] == ')' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -2689,7 +2689,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'Z':
                             try:
-                                if code[index + 1] == 'g' and az_track(code, index + 1):
+                                if code[index + 1] == 'g' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
@@ -3332,7 +3332,7 @@ def run(code, input_list, stack=(), vars=None):
                     while 1:
                         if code[index] == 'z':
                             try:
-                                if code[index + 1] == 'H' and az_track(code, index + 1):
+                                if code[index + 1] == 'H' or az_track(code, index + 1):
                                     break
                             except:
                                 pass
