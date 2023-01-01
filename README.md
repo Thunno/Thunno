@@ -8,3 +8,4 @@ An ASCII-based golfing language
 * [List of commands](https://github.com/Thunno/Thunno/wiki/Commands)
 * [List of flags](https://github.com/Thunno/Thunno/wiki/Flags)
 * [Tutorial](https://github.com/Thunno/Thunno/wiki/Tutorial)
+* [Example programs](https://github.com/Thunno/Thunno/wiki/Example-programs)
