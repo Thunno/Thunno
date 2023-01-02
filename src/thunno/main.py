@@ -10,10 +10,9 @@ def execute(code, inputs, flags_list):
 
 
 def from_filename(filename, flags_list):
-    flags_list = ''.join(x.strip('-') for x in flags_list)
     try:
         with open(filename) as f:
-            execute(f.read(), sys.stdin.read(), flags_list)
+            execute(f.read(), sys.stdin.read(), ''.join(flags_list))
     except:
         sys.stderr.write('[THUNNO]: No such file ' + repr(filename))
 
