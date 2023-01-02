@@ -68,8 +68,8 @@ def run(code, input_list, stack=(), vars=None):
                         stack, vars, br = run(next, input_list, [i] + stack, vars)
                         if br:
                             break
-                        stack.pop(0)
                         lst.append(stack[0])
+                        stack.pop(0)
                     stack.push(lst)
                 else:
                     stack.push(eval(string))
@@ -140,8 +140,8 @@ def run(code, input_list, stack=(), vars=None):
                 stack, vars, br = run(string, input_list, [i] + stack, vars)
                 if br:
                     break
-                stack.pop(0)
                 l.append(stack[0])
+                stack.pop(0)
             stack.push(l)
         elif char == 'f':
             stack.rmv(a)
@@ -1822,9 +1822,9 @@ def run(code, input_list, stack=(), vars=None):
                     stack, vars, br = run(string, input_list, [i] + stack, vars)
                     if br:
                         break
-                    stack.pop(0)
                     if stack[0]:
                         l.append(i)
+                    stack.pop(0)
                 stack.push(l)
             elif next == 'g':
                 stack.rmv(a)
@@ -1865,7 +1865,6 @@ def run(code, input_list, stack=(), vars=None):
                 l = []
                 while True:
                     stack, vars, br = run(string, input_list, [i] + stack, vars)
-                    stack.pop(0)
                     if br:
                         break
                     if stack[0]:
@@ -1873,6 +1872,7 @@ def run(code, input_list, stack=(), vars=None):
                         l.append(i)
                     if x == 0:
                         break
+                    stack.pop(0)
                     i += 1
                 stack.push(l)
             elif next == 'j':
@@ -1901,7 +1901,6 @@ def run(code, input_list, stack=(), vars=None):
                 i = 1
                 while True:
                     stack, vars, br = run(string, input_list, [i] + stack, vars)
-                    stack.pop(0)
                     if br:
                         break
                     if stack[0]:
@@ -1909,6 +1908,7 @@ def run(code, input_list, stack=(), vars=None):
                     if x == 0:
                         stack.push(i)
                         break
+                    stack.pop(0)
                     i += 1
             elif next == 'l':
                 stack.rmv(a)
@@ -1943,12 +1943,12 @@ def run(code, input_list, stack=(), vars=None):
                 i = 1
                 while True:
                     stack, vars, br = run(string, input_list, [i] + stack, vars)
-                    stack.pop(0)
                     if br:
                         break
                     if stack[0]:
                         stack.push(i)
                         break
+                    stack.pop(0)
                     i += 1
             elif next == 'o':
                 pass # This command doesn't do anything
@@ -3349,12 +3349,12 @@ def run(code, input_list, stack=(), vars=None):
                 last_result = None
                 for i in a:
                     stack, vars, _ = run(string, input_list, [i] + stack, vars)
-                    stack.pop(0)
                     if stack[0] == last_result:
                         lst[-1].append(i)
                     else:
                         lst.append([i])
                     last_result = stack[0]
+                    stack.pop(0)
                 if lst[0] == []:
                     lst = lst[1:]
                 stack.push(lst)
@@ -4111,8 +4111,8 @@ def run(code, input_list, stack=(), vars=None):
                     stack, vars, br = run(next, input_list, [i, j] + stack, vars)
                     if br:
                         break
-                    stack.pop(0)
                     lst.append(stack[0])
+                    stack.pop(0)
                 stack.push(lst)
             elif next == '/':
                 stack.rmv(a, b)
@@ -4365,3 +4365,5 @@ def run(code, input_list, stack=(), vars=None):
                     stack.push(input_list)
         index += 1
     return removeNone(stack), vars, False
+
+print(run('.L', [[[*range(5)], [*range(10)], [*range(15)]]]))
