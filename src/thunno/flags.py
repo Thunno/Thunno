@@ -13,7 +13,7 @@ def handle_input_flags(inputs: str, flags: Union[str, List[str]]) -> (list, list
     # With the W flag, the whole input is taken as a multi-line string
     
     if 'W' in flags:
-        inputs = [input]
+        inputs = [inputs]
     else:
         inputs = inputs.splitlines()
 
