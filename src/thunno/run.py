@@ -1258,7 +1258,7 @@ def run(code, input_list, stack=(), vars=None):
             except:
                 pass
             while True:
-                stack, vars, br = run(string, input_list, [i] + stack, vars)
+                stack, vars, br = run(string, input_list, stack, vars)
                 if br:
                     break
         elif char == ']':
@@ -2144,7 +2144,7 @@ def run(code, input_list, stack=(), vars=None):
                 except:
                     pass
                 while True:
-                    stack, vars, br = run(string, input_list, [i] + stack, vars)
+                    stack, vars, br = run(string, input_list, stack, vars)
                     if br:
                         break
             elif next == '$':
