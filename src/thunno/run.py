@@ -180,8 +180,6 @@ def run(code, input_list, stack=(), vars=None):
                     index += 1
             except:
                 pass
-            print(string)
-            index += 1
             l = []
             if isinstance(a, int):
                 x = range(a)
@@ -1896,7 +1894,6 @@ def run(code, input_list, stack=(), vars=None):
                         index += 1
                 except:
                     pass
-                print(string)
                 index += 1
                 i = 1
                 l = []
