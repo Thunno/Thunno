@@ -144,7 +144,7 @@ def run(code, input_list, stack=(), vars=None):
             string = ''
             index += 1
             try:
-                while code[index] != 'E' or not az_track(code, index):
+                while code[index] != 'E' or az_track(code, index):
                     string += code[index]
                     index += 1
             except:
@@ -175,11 +175,12 @@ def run(code, input_list, stack=(), vars=None):
             string = ''
             index += 1
             try:
-                while code[index] != 'k' or not az_track(code, index):
+                while code[index] != 'k' or az_track(code, index):
                     string += code[index]
                     index += 1
             except:
                 pass
+            print(string)
             index += 1
             l = []
             if isinstance(a, int):
@@ -1232,7 +1233,7 @@ def run(code, input_list, stack=(), vars=None):
             string = ''
             index += 1
             try:
-                while code[index] != '}' or not az_track(code, index):
+                while code[index] != '}' or az_track(code, index):
                     string += code[index]
                     index += 1
             except:
@@ -1253,7 +1254,7 @@ def run(code, input_list, stack=(), vars=None):
             string = ''
             index += 1
             try:
-                while code[index] != ']' or not az_track(code, index):
+                while code[index] != ']' or az_track(code, index):
                     string += code[index]
                     index += 1
             except:
@@ -1272,11 +1273,11 @@ def run(code, input_list, stack=(), vars=None):
             falsy = ''
             index += 1
             try:
-                while code[index] != ')' or not az_track(code, index):
+                while code[index] != ')' or az_track(code, index):
                     truthy += code[index]
                     index += 1
                 index += 1
-                while code[index] != ')' or not az_track(code, index):
+                while code[index] != ')' or az_track(code, index):
                     falsy += code[index]
                     index += 1
             except:
@@ -1895,6 +1896,7 @@ def run(code, input_list, stack=(), vars=None):
                         index += 1
                 except:
                     pass
+                print(string)
                 index += 1
                 i = 1
                 l = []
@@ -4413,4 +4415,3 @@ def run(code, input_list, stack=(), vars=None):
                     stack.push(input_list)
         index += 1
     return removeNone(stack), vars, False
-
