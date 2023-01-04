@@ -63,8 +63,14 @@ def run(code, input_list, stack=(), vars=None):
                         index += 1
                         next += code[index]
                     stack.rmv(a)
+                    if isinstance(a, int):
+                        x = range(a)
+                    elif isinstance(a, list):
+                        x = a.copy()
+                    else:
+                        x = str(a)
                     lst = []
-                    for i in a:
+                    for i in x:
                         stack, vars, br = run(next, input_list, [i] + stack, vars)
                         if br:
                             break
@@ -122,9 +128,17 @@ def run(code, input_list, stack=(), vars=None):
         elif char == 'd':
             stack.rmv(a)
             if isinstance(a, list):
-                stack.push([list(str(i)) for i in a])
+                lst = []
+                for i in a:
+                    if isinstance(i, int):
+                        lst.append([int(d) for d in str(i)])
+                    else:
+                        lst.append(list(str(i)))
             else:
-                stack.push(list(str(a)))
+                if isinstance(a, int):
+                    lst.append([int(d) for d in str(a)])
+                else:
+                    lst.append(list(str(a)))
         elif char == 'e':
             stack.rmv(a)
             string = ''
@@ -136,7 +150,13 @@ def run(code, input_list, stack=(), vars=None):
             except:
                 pass
             l = []
-            for i in a:
+            if isinstance(a, int):
+                x = range(a)
+            elif isinstance(a, list):
+                x = a.copy()
+            else:
+                x = str(a)
+            for i in x:
                 stack, vars, br = run(string, input_list, [i] + stack, vars)
                 if br:
                     break
@@ -151,11 +171,37 @@ def run(code, input_list, stack=(), vars=None):
             else:
                 stack.push(f(a))
         elif char == 'g':
-            stack.rmv(a, b)
+            stack.rmv(a)
+            string = ''
+            index += 1
             try:
-                stack.push(re.findall(str(a), str(b)))
+                while 1:
+                    if code[index] == 'A':
+                        try:
+                            if code[index + 1] == 'h' or az_track(code, index + 1):
+                                break
+                        except:
+                            pass
+                    string += code[index]
+                    index += 1
             except:
-                stack.push([])
+                pass
+            index += 1
+            l = []
+            if isinstance(a, int):
+                x = range(a)
+            elif isinstance(a, list):
+                x = a.copy()
+            else:
+                x = str(a)
+            for i in x:
+                stack, vars, br = run(string, input_list, [i] + stack, vars)
+                if br:
+                    break
+                if stack[0]:
+                    l.append(i)
+                stack.pop(0)
+            stack.push(l)
         elif char == 'h':
             stack.rmv(a)
             if isinstance(a, list):
@@ -193,11 +239,7 @@ def run(code, input_list, stack=(), vars=None):
             except:
                 stack.push(str(a))
         elif char == 'k':
-            stack.rmv(a, b)
-            try:
-                stack.push(a.index(b))
-            except:
-                stack.push(-1)
+            pass # This command doesn't do anything
         elif char == 'l':
             stack.push([])
         elif char == 'm':
@@ -359,6 +401,12 @@ def run(code, input_list, stack=(), vars=None):
             else:
                 while None in stack:
                     stack.rmv(None)
+        elif char == 'w':
+            if isinstance(a, list):
+                stack.rmv(a)
+                stack.push([i for i in a if i])
+            else:
+                stack.push(a)
         elif char == 'x':
             stack.push(vars.get('x', 0))
         elif char == 'y':
@@ -437,7 +485,10 @@ def run(code, input_list, stack=(), vars=None):
             stack.push(input_list)
         elif char == 'J':
             stack.rmv(a)
-            stack.push(''.join(map(str, a)))
+            if isinstance(a, list):
+                stack.push(''.join(map(str, a)))
+            else:
+                stack.push(str(a))
         elif char == 'K':
             stack.rmv(a)
         elif char == 'L':
@@ -1192,7 +1243,13 @@ def run(code, input_list, stack=(), vars=None):
                     index += 1
             except:
                 pass
-            for i in a:
+            if isinstance(a, int):
+                x = range(a)
+            elif isinstance(a, list):
+                x = a.copy()
+            else:
+                x = str(a)
+            for i in x:
                 stack, vars, br = run(string, input_list, [i] + stack, vars)
                 if br:
                     break
@@ -1801,31 +1858,11 @@ def run(code, input_list, stack=(), vars=None):
             elif next == 'e':
                 stack.push(math.e)
             elif next == 'f':
-                stack.rmv(a)
-                string = ''
-                index += 1
+                stack.rmv(a, b)
                 try:
-                    while 1:
-                        if code[index] == 'A':
-                            try:
-                                if code[index + 1] == 'h' or az_track(code, index + 1):
-                                    break
-                            except:
-                                pass
-                        string += code[index]
-                        index += 1
+                    stack.push(re.findall(str(a), str(b)))
                 except:
-                    pass
-                index += 1
-                l = []
-                for i in a:
-                    stack, vars, br = run(string, input_list, [i] + stack, vars)
-                    if br:
-                        break
-                    if stack[0]:
-                        l.append(i)
-                    stack.pop(0)
-                stack.push(l)
+                    stack.push([])
             elif next == 'g':
                 stack.rmv(a)
                 if not isinstance(a, list):
@@ -1839,7 +1876,11 @@ def run(code, input_list, stack=(), vars=None):
                             pass
                     stack.push(gcd(l))
             elif next == 'h':
-                pass # This command doesn't do anything
+                stack.rmv(a, b)
+                try:
+                    stack.push(a.index(b))
+                except:
+                    stack.push(-1)
             elif next == 'i':
                 try:
                     x = int(a)
@@ -2172,7 +2213,13 @@ def run(code, input_list, stack=(), vars=None):
                     index += 1
                 except:
                     pass
-                for i, j in enumerate(a):
+                if isinstance(a, int):
+                    x = range(a)
+                elif isinstance(a, list):
+                    x = a.copy()
+                else:
+                    x = str(a)
+                for i, j in enumerate(x):
                     stack, vars, br = run(string, input_list, [j, i] + stack, vars)
                     if br:
                         break
@@ -3347,7 +3394,13 @@ def run(code, input_list, stack=(), vars=None):
                     x = a.copy()
                 lst = [[]]
                 last_result = None
-                for i in a:
+                if isinstance(a, int):
+                    x = range(a)
+                elif isinstance(a, list):
+                    x = a.copy()
+                else:
+                    x = str(a)
+                for i in x:
                     stack, vars, _ = run(string, input_list, [i] + stack, vars)
                     if stack[0] == last_result:
                         lst[-1].append(i)
@@ -3373,7 +3426,7 @@ def run(code, input_list, stack=(), vars=None):
                     x = str(a)
                 else:
                     x = a.copy()
-                stack.push('\n'.join(map(str, a)))
+                stack.push('\n'.join(map(str, x)))
             elif next == 'K':
                 stack.rmv(a, b)
                 if isinstance(a, list):
@@ -3658,7 +3711,9 @@ def run(code, input_list, stack=(), vars=None):
                 else:
                     stack.push(all(i == x[0] for i in x))
             elif next == 'f':
-                stack.push(False)
+                stack.rmv(a)
+                if isinstance(a, int):
+                    stack = Stack(stack[a % len(stack):] + stack[:a % len(stack)])
             elif next == 'g':
                 stack.rmv(a, b)
                 if isinstance(a, list):
@@ -3817,7 +3872,6 @@ def run(code, input_list, stack=(), vars=None):
                         except:
                             stack.push(None)
             elif next == 'n':
-                stack.rmv(a)
                 if not isinstance(a, list):
                     A = stack.copy()
                 else:
@@ -4366,4 +4420,3 @@ def run(code, input_list, stack=(), vars=None):
         index += 1
     return removeNone(stack), vars, False
 
-print(run('.L', [[[*range(5)], [*range(10)], [*range(15)]]]))
