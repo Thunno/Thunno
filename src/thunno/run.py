@@ -175,13 +175,7 @@ def run(code, input_list, stack=(), vars=None):
             string = ''
             index += 1
             try:
-                while 1:
-                    if code[index] == 'A':
-                        try:
-                            if code[index + 1] == 'h' or az_track(code, index + 1):
-                                break
-                        except:
-                            pass
+                while code[index] != 'k' or not az_track(code, index):
                     string += code[index]
                     index += 1
             except:
