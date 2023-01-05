@@ -4,13 +4,13 @@ long_description = 'Thunno is an ASCII-based golfing language written in Python.
 
 setup(
   name = 'thunno',
-  version = '1.1.4',
+  version = '1.2.0',
   license='MIT',
   description = 'An ASCII-based golfing language',
   author = 'Rujul Nayak',
   author_email = 'rujulnayak@outlook.com',
   url = 'https://github.com/Thunno/Thunno',
-  download_url = 'https://github.com/Thunno/Thunno/archive/refs/tags/v1.1.4.tar.gz',
+  download_url = 'https://github.com/Thunno/Thunno/archive/refs/tags/v1.2.0.tar.gz',
   keywords = ['golfing', 'code-golf', 'language'],
   install_requires=[
       ],
