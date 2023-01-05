@@ -3,7 +3,7 @@ from thunno import run
 import sys
 
 
-THUNNO_VERSION = "1.2.0"
+THUNNO_VERSION = "1.2.1"
 
 
 def execute(code, inputs, flags_list):
@@ -13,7 +13,7 @@ def execute(code, inputs, flags_list):
 
 
 def from_filename(filename, flags_list):
-    sys.stderr.write('Thunno, v' + THUNNO_VERSION)
+    sys.stderr.write('Thunno, v' + THUNNO_VERSION + '\n')
     try:
         with open(filename) as f:
             execute(f.read(), sys.stdin.read(), ''.join(flags_list))
