@@ -131,14 +131,15 @@ def run(code, input_list, stack=(), vars=None):
                 lst = []
                 for i in a:
                     if isinstance(i, int):
-                        lst.append([int(d) for d in str(i)])
+                        lst.append([int(d) if d in '0123456789' else d for d in str(i)])
                     else:
                         lst.append(list(str(i)))
+                 stack.push(lst) 
             else:
                 if isinstance(a, int):
-                    lst.append([int(d) for d in str(a)])
+                    stack.push([int(d) if d in '0123456789' else d for d in str(a)])
                 else:
-                    lst.append(list(str(a)))
+                    stack.push(list(str(a)))
         elif char == 'e':
             stack.rmv(a)
             string = ''
