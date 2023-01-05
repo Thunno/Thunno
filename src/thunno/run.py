@@ -1,3 +1,6 @@
+# VERSION 1.2.0
+# Jan 5th 2023
+
 '''
 MIT License
 
@@ -29,7 +32,7 @@ import statistics
 import random
 import itertools
 
-from thunno.helpers import *
+from helpers import *
 
 def run(code, input_list, stack=(), vars=None):
     if vars is None:
@@ -3457,7 +3460,7 @@ def run(code, input_list, stack=(), vars=None):
                         except:
                             stack.push(None)
             elif next == 'L':
-                stack.rmv(a, b)
+                stack.rmv(a, b, c)
                 if isinstance(a, list):
                     if isinstance(b, list):
                         lst = []
@@ -3465,7 +3468,7 @@ def run(code, input_list, stack=(), vars=None):
                             lst.append([])
                             for i in a:
                                 try:
-                                    lst[-1].append(str(j).ljust(int(i)))
+                                    lst[-1].append(str(c).ljust(-int(i), str(j)) if int(i) < 0 else str(c).rjust(int(i), str(j)))
                                 except:
                                     lst[-1].append(None)
                         stack.push(lst)
@@ -3473,7 +3476,7 @@ def run(code, input_list, stack=(), vars=None):
                         lst = []
                         for i in a:
                             try:
-                                lst.append(str(b).ljust(int(i)))
+                                lst.append(str(c).ljust(-int(i), str(b)) if int(i) < 0 else str(c).rjust(int(i), str(b)))
                             except:
                                 lst.append(None)
                         stack.push(lst)
@@ -3482,13 +3485,13 @@ def run(code, input_list, stack=(), vars=None):
                         lst = []
                         for i in b:
                             try:
-                                lst.append(str(i).ljust(int(a)))
+                                lst.append(str(c).ljust(-int(a), str(i)) if int(a) < 0 else str(c).rjust(int(a), str(i)))
                             except:
                                 lst.append(None)
                         stack.push(lst)
                     else:
                         try:
-                            stack.push(str(b).ljust(int(a)))
+                            stack.push(str(c).ljust(-int(a), str(b)) if int(a) < 0 else str(c).rjust(int(a), str(b)))
                         except:
                             stack.push(None)
             elif next == 'M':
