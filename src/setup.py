@@ -10,7 +10,7 @@ setup(
   author = 'Rujul Nayak',
   author_email = 'rujulnayak@outlook.com',
   url = 'https://github.com/Thunno/Thunno',
-  download_url = 'https://github.com/Thunno/Thunno/archive/refs/tags/v1.2.0.tar.gz',
+  download_url = 'https://github.com/Thunno/Thunno/archive/refs/tags/v1.2.1.tar.gz',
   keywords = ['golfing', 'code-golf', 'language'],
   install_requires=[
       ],
