@@ -134,7 +134,7 @@ def run(code, input_list, stack=(), vars=None):
                         lst.append([int(d) if d in '0123456789' else d for d in str(i)])
                     else:
                         lst.append(list(str(i)))
-                 stack.push(lst) 
+                stack.push(lst) 
             else:
                 if isinstance(a, int):
                     stack.push([int(d) if d in '0123456789' else d for d in str(a)])
@@ -3557,13 +3557,19 @@ def run(code, input_list, stack=(), vars=None):
                         try:
                             lst.append(list(map(list, itertools.combinations(b, int(i)))))
                         except:
-                            lst.append(list(map(list, itertools.combinations(b))))
+                            try:
+                                lst.append(list(b))
+                            except:
+                                lst.append(list(str(b)))
                     stack.push(lst)
                 else:
                     try:
                         stack.push(list(map(list, itertools.combinations(b, int(a)))))
                     except:
-                        stack.push(list(map(list, itertools.combinations(b))))
+                        try:
+                            stack.push(list(b))
+                        except:
+                            stack.push(list(str(b)))
             elif next == 'R':
                 stack.rmv(a, b)
                 if not isinstance(b, list):
@@ -3576,13 +3582,19 @@ def run(code, input_list, stack=(), vars=None):
                         try:
                             lst.append(list(map(list, itertools.combinations_with_replacement(b, int(i)))))
                         except:
-                            lst.append(list(map(list, itertools.combinations_with_replacement(b))))
+                            try:
+                                lst.append(list(b))
+                            except:
+                                lst.append(list(str(b)))
                     stack.push(lst)
                 else:
                     try:
                         stack.push(list(map(list, itertools.combinations_with_replacement(b, int(a)))))
                     except:
-                        stack.push(list(map(list, itertools.combinations_with_replacement(b))))
+                        try:
+                            stack.push(list(b))
+                        except:
+                            stack.push(list(str(b)))
             elif next == 'S':
                 stack.rmv(a)
                 try:
