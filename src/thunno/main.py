@@ -3,6 +3,9 @@ from thunno import run
 import sys
 
 
+THUNNO_VERSION = "1.2.0"
+
+
 def execute(code, inputs, flags_list):
     inputs, stack = flags.handle_input_flags(inputs, flags_list)
     stack, vars, _ = run.run(code, inputs, stack)
@@ -10,15 +13,16 @@ def execute(code, inputs, flags_list):
 
 
 def from_filename(filename, flags_list):
+    sys.stderr.write('Thunno, v' + THUNNO_VERSION)
     try:
         with open(filename) as f:
             execute(f.read(), sys.stdin.read(), ''.join(flags_list))
-    except:
-        sys.stderr.write('[THUNNO]: No such file ' + repr(filename))
+    except Exception as E:
+        sys.stderr.write('An error occurred -' + repr(E))
 
 
 def not_from_filename():
-    print('Thunno Interpreter')
+    print('Thunno Interpreter (v' + THUNNO_VERSION + ')')
     print('\nFlags:')
     flags_list = input()
     code = ''
@@ -43,6 +47,7 @@ def not_from_filename():
     while inp:
         inputs += inp + '\n'
         inp = input()
+    print('\nOutput:')
     execute(code, inputs, flags_list)
 
 def cmdline():
