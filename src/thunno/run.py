@@ -32,7 +32,7 @@ import statistics
 import random
 import itertools
 
-from helpers import *
+from thunno.helpers import *
 
 def run(code, input_list, stack=(), vars=None):
     if vars is None:
