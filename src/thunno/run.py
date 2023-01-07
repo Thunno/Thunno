@@ -1,4 +1,4 @@
-# VERSION 1.2.1
+# VERSION 1.2.2
 # Jan 5th 2023
 
 '''
@@ -1228,8 +1228,11 @@ def run(code, input_list, stack=(), vars=None):
             stack.rmv(a)
             stack.push(not a)
         elif char == '#':
-            while code[index] != '\n':
-                index += 1
+            try:
+                while code[index] != '\n':
+                    index += 1
+            except:
+                pass
         elif char == '{':
             stack.rmv(a)
             string = ''
@@ -4007,11 +4010,25 @@ def run(code, input_list, stack=(), vars=None):
                 except:
                     pass
             elif next == '"':
-                index += 4
-                stack.push(code[index-3:index+1])
+                string = ''
+                index += 1
+                try:
+                    while code[index] != '"':
+                        string += code[index]
+                        index += 1
+                except:
+                    pass
+                stack.push(string.split('\''))
             elif next == '\'':
-                index += 5
-                stack.push(code[index-4:index+1])
+                string = ''
+                index += 1
+                try:
+                    while code[index] != '\'':
+                        string += code[index]
+                        index += 1
+                except:
+                    pass
+                stack.push([string[:len(string)//2], string[len(string)//2:]])
             elif next == '#':
                 index += 2
             elif next == '$':
