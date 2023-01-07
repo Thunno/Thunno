@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: thunno
-Version: 1.2.1
+Version: 1.2.2
 Summary: An ASCII-based golfing language
 Home-page: https://github.com/Thunno/Thunno
 Author: Rujul Nayak
 Author-email: rujulnayak@outlook.com
 License: MIT
-Download-URL: https://github.com/Thunno/Thunno/archive/refs/tags/v1.2.1.tar.gz
+Download-URL: https://github.com/Thunno/Thunno/archive/refs/tags/v1.2.2.tar.gz
 Keywords: golfing,code-golf,language
 Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha
