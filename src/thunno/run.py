@@ -1,5 +1,5 @@
-# VERSION 1.2.2
-# Jan 5th 2023
+# VERSION 1.2.3
+# Jan 7th 2023
 
 '''
 MIT License
