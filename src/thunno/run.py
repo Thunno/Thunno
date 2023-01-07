@@ -1271,18 +1271,20 @@ def run(code, input_list, stack=(), vars=None):
         elif char == ']':
             pass # This command doesn't do anything
         elif char == ')':
-            return removeNone(stack), vars, True
+            stack.rmv(a)
+            if a:
+                return removeNone(stack), vars, True
         elif char == '?':
             stack.rmv(a)
             truthy = ''
             falsy = ''
             index += 1
             try:
-                while code[index] != ')' or az_track(code, index):
+                while code[index] != '(' or az_track(code, index):
                     truthy += code[index]
                     index += 1
                 index += 1
-                while code[index] != ')' or az_track(code, index):
+                while code[index] != '(' or az_track(code, index):
                     falsy += code[index]
                     index += 1
             except:
