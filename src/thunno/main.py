@@ -3,7 +3,7 @@ from thunno import run
 import sys
 
 
-THUNNO_VERSION = "1.2.1"
+THUNNO_VERSION = "1.2.2"
 
 
 def execute(code, inputs, flags_list):
